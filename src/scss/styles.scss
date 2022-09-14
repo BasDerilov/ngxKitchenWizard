@@ -1,1 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+$primary: #198754;
+$secondary: #f0f7ee;
+$red: #fe5f55;
+$dark: #403233;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $primary,
+  "info": $secondary,
+  "warning": $red,
+  "danger": $red,
+  "light": $secondary,
+  "dark": $dark,
+);
+
 @import "/node_modules/bootstrap/scss/bootstrap";
+
+body {
+  background-color: $secondary;
+  font-family: "Libre Baskerville", serif;
+}
+
+a:hover {
+  color: $primary;
+}

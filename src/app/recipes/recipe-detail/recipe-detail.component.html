@@ -1,1 +1,51 @@
-<p>recipe-detail works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <img src="" alt="" class="img-responsive" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs12">
+    <h1>Recipe Name</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="d-grid gap-2">
+      <button
+        type="button"
+        name="toggleMenu"
+        id="toggleMenu"
+        class="btn btn-primary"
+        [popper]="recipeManage"
+        [popperTrigger]="'click'"
+        [popperApplyClass]="'bg-primary, text-light'"
+      >
+        Manage Recipe <span class="caret"></span>
+      </button>
+
+      <popper-content #recipeManage class="list-group">
+        <a
+          class="dropdown-item list-group-item list-group-item-primary"
+          href="#"
+          >To shopping list</a
+        >
+        <a
+          class="dropdown-item list-group-item list-group-item-primary"
+          href="#"
+          >Edit Recipe</a
+        >
+        <a
+          class="dropdown-item list-group-item list-group-item-primary"
+          href="#"
+          >Delete Recipe</a
+        >
+      </popper-content>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">Description</div>
+</div>
+<div class="row">
+  <div class="col-xs-12">Ingredients</div>
+</div>
