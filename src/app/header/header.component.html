@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Kitchen Wizard</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#" aria-current="page">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shopping List</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mt-2 mt-lg-0">
+        <a
+          [popper]="navPopper"
+          [popperTrigger]="'click'"
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="popperDropdown"
+          >Manage</a
+        >
+
+        <popper-content #navPopper>
+          <a class="dropdown-item" href="#">Save Data</a>
+          <a class="dropdown-item" href="#">Fetch Data</a>
+        </popper-content>
+      </ul>
+    </div>
+  </div>
+</nav>
