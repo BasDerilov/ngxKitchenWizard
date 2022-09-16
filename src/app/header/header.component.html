@@ -15,10 +15,18 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#" aria-current="page">Recipes</a>
+          <a
+            class="nav-link"
+            (click)="emitRoute('recipes')"
+            href="#"
+            aria-current="page"
+            >Recipes</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shopping List</a>
+          <a class="nav-link" (click)="emitRoute('shopping')" href="#"
+            >Shopping List</a
+          >
         </li>
       </ul>
       <ul class="navbar-nav mt-2 mt-lg-0">

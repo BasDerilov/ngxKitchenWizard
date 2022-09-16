@@ -12,7 +12,25 @@ export class ShoppingListComponent implements OnInit {
     new Ingredient('Tomatoes', 10),
   ];
 
+  private ingredientExists(ingredient: Ingredient): any {
+    return this.ingredients.find(
+      (thisIngredient) =>
+        thisIngredient.name.toLowerCase() === ingredient.name.toLowerCase()
+    );
+  }
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  addNewIngredient(ingredient: Ingredient) {
+    const ingredientExists = this.ingredientExists(ingredient);
+
+    if (ingredientExists) {
+      const existingIngredient = ingredientExists as Ingredient;
+      existingIngredient.amount += ingredient.amount;
+    } else {
+      this.ingredients.push(ingredient);
+    }
+  }
 }
