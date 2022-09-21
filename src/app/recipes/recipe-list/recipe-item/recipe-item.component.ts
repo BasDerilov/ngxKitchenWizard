@@ -10,7 +10,8 @@ export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe = new Recipe(
     'uninitiated',
     'uninitiated',
-    'uninitiated'
+    'uninitiated',
+    []
   );
 
   constructor() {}

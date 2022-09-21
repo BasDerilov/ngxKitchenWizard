@@ -17,35 +17,40 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="d-grid gap-2">
-        <button
-          type="button"
-          name="toggleMenu"
-          id="toggleMenu"
-          class="btn btn-primary"
-          [popper]="recipeManage"
-          [popperTrigger]="'click'"
-          [popperApplyClass]="'bg-primary, text-light'"
-        >
-          Manage Recipe <span class="caret"></span>
-        </button>
-
-        <popper-content #recipeManage class="list-group">
-          <a
-            class="dropdown-item list-group-item list-group-item-primary"
-            href="#"
-            >To shopping list</a
+        <div class="btn-group" dropdown>
+          <button
+            id="button-basic"
+            dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            aria-controls="manage"
           >
-          <a
-            class="dropdown-item list-group-item list-group-item-primary"
-            href="#"
-            >Edit Recipe</a
+            Manage <span class="caret"></span>
+          </button>
+          <ul
+            id="manage"
+            *dropdownMenu
+            class="dropdown-menu w-100"
+            role="menu"
+            aria-labelledby="button-basic"
           >
-          <a
-            class="dropdown-item list-group-item list-group-item-primary"
-            href="#"
-            >Delete Recipe</a
-          >
-        </popper-content>
+            <li role="menuitem">
+              <a
+                class="dropdown-item"
+                (click)="sendIngredientsToShopping()"
+                href="#"
+                >To Shopping List</a
+              >
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Edit Recipe</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Delete Recipe</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -53,6 +58,16 @@
     <div class="col-xs-12">{{ streams.recipe?.description }}</div>
   </div>
   <div class="row">
-    <div class="col-xs-12">Ingredients</div>
+    <div class="col-xs-12">
+      <div class="list-group">
+        <label
+          *ngFor="let ingredient of streams.recipe?.ingredients"
+          class="list-group-item"
+        >
+          <input class="form-check-input me-1" type="checkbox" value="" />
+          {{ ingredient.name }} : {{ ingredient.amount }}
+        </label>
+      </div>
+    </div>
   </div>
 </ng-container>

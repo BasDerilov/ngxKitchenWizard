@@ -29,23 +29,55 @@
           >
         </li>
       </ul>
-      <ul class="navbar-nav mt-2 mt-lg-0">
+      <!-- <span class="navbar-nav mt-2 mt-lg-0" dropdown>
         <a
-          [popper]="navPopper"
-          [popperTrigger]="'click'"
-          [popperApplyClass]="'bg-dark, text-light'"
-          [popperPlacement]="'bottom-start'"
+          href
+          dropdownToggle
+          type="button"
+          aria-controls="app-options"
           class="nav-link dropdown-toggle"
           href="#"
-          id="popperDropdown"
+          id="btn-app-options"
           >Manage</a
         >
 
-        <popper-content #navPopper>
+        <ul
+          class="dropdown-basic"
+          *dropdownMenu
+          id="app-options"
+          aria-labelledby="btn-app-options"
+          role="menu"
+        >
+          <li role="menuitem">
+            <a class="dropdown-item" href="#">Save Data</a>
+          </li>
+          <li role="menuitem">
+            <a class="dropdown-item" href="#">Fetch Data</a>
+          </li>
+        </ul>
+      </span> -->
+
+      <div dropdown placement="bottom-right" class="position-relative">
+        <a
+          type="button"
+          id="optionsBtn"
+          dropdownToggle
+          class="nav-link text-light dropdown-toggle"
+          (click)="(false)"
+          aria-controls="basic-link-dropdown"
+          >Manage</a
+        >
+        <ul
+          id="basic-link-dropdown"
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="optionsBtn"
+        >
           <a class="dropdown-item" href="#">Save Data</a>
-          <a class="dropdown-item" href="#">Fetch Data</a>
-        </popper-content>
-      </ul>
+          <a class="dropdown-item" href="#">Load Data</a>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
