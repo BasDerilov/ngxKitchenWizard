@@ -5,10 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  currentPage: string = 'recipes';
-
-  changeRoute(section: string) {
-    this.currentPage = section;
-  }
-}
+export class AppComponent {}

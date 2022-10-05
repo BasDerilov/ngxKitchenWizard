@@ -1,0 +1,103 @@
+<div class="mb-3">
+  <label for="recipe-name-input" class="form-label">Recipe Name</label>
+  <input
+    type="text"
+    class="form-control"
+    name="recipe-name-input"
+    id="recipe-name-input"
+    aria-describedby="recipe-name-help"
+    [value]="recipe.name"
+    #recipeTitleInput
+  />
+  <small id="recipe-name-help" class="form-text text-muted"
+    >choose a name for your recipe</small
+  >
+</div>
+<div class="mb-3">
+  <label for="recipe-description-input" class="form-label"
+    >Recipe Description</label
+  >
+  <textarea
+    class="form-control"
+    name="recipe-description-input"
+    id="recipe-description-input"
+    rows="4"
+    [value]="recipe.description"
+    #recipeDescriptionInput
+  ></textarea>
+</div>
+<div class="mb-3">
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      *ngFor="let ingredient of recipe.ingredients; let i = index"
+    >
+      <div class="input-group d-flex">
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="helpId"
+          placeholder="ingredient"
+          [value]="ingredient.name"
+          (change)="ingredient.name = nameInput.value"
+          #nameInput
+          required
+        />
+        <input
+          placeholder="amount"
+          class="form-control"
+          type="number"
+          [value]="ingredient.amount"
+          (change)="ingredient.amount = +amountInput.value"
+          #amountInput
+          required
+        />
+        <input
+          name="deleteBtn"
+          id="deleteBtn"
+          class="btn btn-outline-danger"
+          type="button"
+          value="Delete"
+          (click)="onDeleteIngredient(ingredient)"
+        />
+      </div>
+    </li>
+    <input
+      name="add-new-ingredient-button"
+      id="add-new-ingredient-button"
+      class="btn btn-primary list-group-item form-control"
+      type="button"
+      value="Add ingredient"
+      (click)="onAddIngredient()"
+    />
+  </ul>
+</div>
+<div class="mb-3">
+  <div class="mb-3">
+    <label for="image-input" class="form-label">image url</label>
+    <input
+      type="text"
+      class="form-control"
+      name="image-input"
+      id="image-input"
+      placeholder="https://example.com/image"
+      [value]="recipe.imagePath"
+      (change)="recipe.imagePath = imagePathInput.value"
+      #imagePathInput
+    />
+  </div>
+</div>
+<a
+  name=""
+  id=""
+  class="btn btn-primary"
+  (click)="
+    onSave(
+      recipeTitleInput.value,
+      recipeDescriptionInput.value,
+      imagePathInput.value
+    )
+  "
+  role="button"
+  >Save</a
+>

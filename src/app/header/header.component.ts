@@ -1,14 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
-  @Output('routerChange') routeEmitter = new EventEmitter<string>();
-
-  emitRoute(route: string) {
-    this.routeEmitter.emit(route);
-  }
-}
+export class HeaderComponent {}

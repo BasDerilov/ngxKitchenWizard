@@ -1,13 +1,13 @@
 import { Recipe } from '../recipes/recipe.model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Ingredient } from './ingredient.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  private _recipeDb: Recipe[] = [
+  private _recipes: Recipe[] = [
     new Recipe(
       'Top Sirloin Hot Pot',
       'Heat the oil in a medium, heavy saucepan over medium-high heat until hot. Stir in the mushrooms and ',
@@ -30,21 +30,13 @@ export class RecipeService {
     ),
   ];
 
-  private _selectedRecipe: BehaviorSubject<Recipe>;
+  constructor() {}
 
-  constructor() {
-    this._selectedRecipe = new BehaviorSubject<Recipe>(this._recipeDb[0]);
+  public get recipes(): Recipe[] {
+    return [...this._recipes];
   }
 
-  public get allRecipes(): Recipe[] {
-    return [...this._recipeDb];
-  }
-
-  public getSelectedRecipe(): Observable<Recipe> {
-    return this._selectedRecipe.asObservable();
-  }
-
-  public setCurrentRecipe(newSelection: Recipe) {
-    this._selectedRecipe.next(newSelection);
+  addRecipe(recipe: Recipe) {
+    this._recipes.push(recipe);
   }
 }

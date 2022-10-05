@@ -1,9 +1,10 @@
 <a
-  href="#"
   class="list-group-item clearfix list-group-item-action list-group-item-secondary p-0"
+  [routerLink]="[index]"
+  routerLinkActive="active text-light"
 >
   <div class="p-3 d-flex justify-content-between">
-    <div class="pull-left text-dark">
+    <div class="pull-left">
       <h4 class="">{{ recipe.name }}</h4>
       <p class="">{{ recipe.description }}</p>
     </div>

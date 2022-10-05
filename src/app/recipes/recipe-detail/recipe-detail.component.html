@@ -1,73 +1,68 @@
-<ng-container *ngIf="{ recipe: recipe$ | async } as streams">
-  <div class="row">
-    <div class="col-xs-12">
-      <img
-        [src]="streams.recipe?.imagePath"
-        style="max-height: 250px"
-        alt=""
-        class="img-responsive"
-      />
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      [src]="selectedRecipe?.imagePath"
+      style="max-height: 250px"
+      alt=""
+      class="img-responsive"
+    />
   </div>
-  <div class="row">
-    <div class="col-xs12">
-      <h1>{{ streams.recipe?.name }}</h1>
-    </div>
+</div>
+<div class="row">
+  <div class="col-xs12">
+    <h1>{{ selectedRecipe?.name }}</h1>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="d-grid gap-2">
-        <div class="btn-group" dropdown>
-          <button
-            id="button-basic"
-            dropdownToggle
-            type="button"
-            class="btn btn-primary dropdown-toggle"
-            aria-controls="manage"
-          >
-            Manage <span class="caret"></span>
-          </button>
-          <ul
-            id="manage"
-            *dropdownMenu
-            class="dropdown-menu w-100"
-            role="menu"
-            aria-labelledby="button-basic"
-          >
-            <li role="menuitem">
-              <a
-                class="dropdown-item"
-                (click)="sendIngredientsToShopping()"
-                href="#"
-                >To Shopping List</a
-              >
-            </li>
-            <li role="menuitem">
-              <a class="dropdown-item" href="#">Edit Recipe</a>
-            </li>
-            <li class="divider dropdown-divider"></li>
-            <li role="menuitem">
-              <a class="dropdown-item" href="#">Delete Recipe</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">{{ streams.recipe?.description }}</div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="list-group">
-        <label
-          *ngFor="let ingredient of streams.recipe?.ingredients"
-          class="list-group-item"
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="d-grid gap-2">
+      <div class="btn-group" dropdown>
+        <button
+          id="button-basic"
+          dropdownToggle
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          aria-controls="manage"
         >
-          <input class="form-check-input me-1" type="checkbox" value="" />
-          {{ ingredient.name }} : {{ ingredient.amount }}
-        </label>
+          Manage <span class="caret"></span>
+        </button>
+        <ul
+          id="manage"
+          *dropdownMenu
+          class="dropdown-menu w-100"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem">
+            <a class="dropdown-item" (click)="sendIngredientsToShopping()"
+              >To Shopping List</a
+            >
+          </li>
+          <li role="menuitem">
+            <a [routerLink]="['edit']" class="dropdown-item">Edit Recipe</a>
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem">
+            <a class="dropdown-item">Delete Recipe</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-</ng-container>
+</div>
+<div class="row">
+  <div class="col-xs-12">{{ selectedRecipe?.description }}</div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="list-group">
+      <label
+        *ngFor="let ingredient of selectedRecipe?.ingredients"
+        class="list-group-item"
+      >
+        <input class="form-check-input me-1" type="checkbox" value="" />
+        {{ ingredient.name }} : {{ ingredient.amount }}
+      </label>
+    </div>
+  </div>
+</div>

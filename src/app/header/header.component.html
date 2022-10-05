@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
   <div class="container">
-    <a class="navbar-brand fs-4 fst-italic" href="#">Kitchen Wizard</a>
+    <a class="navbar-brand fs-4 fst-italic" routerLink="">Kitchen Wizard</a>
     <button
       class="navbar-toggler d-lg-none"
       type="button"
@@ -17,14 +17,14 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            (click)="emitRoute('recipes')"
-            href="#"
+            routerLinkActive="active"
+            routerLink="recipes"
             aria-current="page"
             >Recipes</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="emitRoute('shopping')" href="#"
+          <a class="nav-link" routerLinkActive="active" routerLink="shopping"
             >Shopping List</a
           >
         </li>
@@ -74,8 +74,8 @@
           role="menu"
           aria-labelledby="optionsBtn"
         >
-          <a class="dropdown-item" href="#">Save Data</a>
-          <a class="dropdown-item" href="#">Load Data</a>
+          <a class="dropdown-item">Save Data</a>
+          <a class="dropdown-item">Load Data</a>
         </ul>
       </div>
     </div>

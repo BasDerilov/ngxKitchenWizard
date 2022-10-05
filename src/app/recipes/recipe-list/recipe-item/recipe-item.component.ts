@@ -7,12 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./recipe-item.component.scss'],
 })
 export class RecipeItemComponent implements OnInit {
-  @Input() recipe: Recipe = new Recipe(
-    'uninitiated',
-    'uninitiated',
-    'uninitiated',
-    []
-  );
+  @Input() recipe!: Recipe;
+  @Input() index!: number;
 
   constructor() {}
 
