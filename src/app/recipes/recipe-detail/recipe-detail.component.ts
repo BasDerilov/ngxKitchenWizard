@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RecipeDetailComponent implements OnInit {
   selectedRecipe: Recipe | undefined;
+  recipeList?: Recipe[];
 
   constructor(
     private recipeService: RecipeService,
@@ -19,8 +20,12 @@ export class RecipeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((path) => {
-      this.selectedRecipe = this.recipeService.recipes[path['id']];
+    this.recipeService.recipesObservable.subscribe((recipes) => {
+      this.recipeList = recipes;
+
+      this.route.params.subscribe((path) => {
+        this.selectedRecipe = recipes[path['id']];
+      });
     });
   }
 

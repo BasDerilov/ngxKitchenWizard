@@ -1,7 +1,8 @@
 import { Recipe } from '../recipes/recipe.model';
-import { Injectable } from '@angular/core';
+import { AfterContentInit, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Ingredient } from './ingredient.model';
+import { __spreadArray } from 'tslib';
 
 @Injectable({
   providedIn: 'root',
@@ -28,15 +29,26 @@ export class RecipeService {
         new Ingredient('Chicken Broth', 2),
       ]
     ),
+
+    new Recipe(
+      'Rødgrød med fløde',
+      'Rødgrød med fløde er en rigtig dansk sommerklassiker og det smager virkelig dejligt med sommerens solmodne bær.',
+      'https://www.valdemarsro.dk/wp-content/2014/06/roedgroed-floede_.jpg',
+      [new Ingredient('Fruit', 600)]
+    ),
   ];
+
+  recipesObservable = new Observable<Recipe[]>((subscriber) => {
+    subscriber.next(this._recipes);
+  });
 
   constructor() {}
 
-  public get recipes(): Recipe[] {
-    return [...this._recipes];
-  }
-
   addRecipe(recipe: Recipe) {
     this._recipes.push(recipe);
+  }
+
+  updateRecipe(index: number, updatedRecipe: Recipe) {
+    this._recipes[index] = updatedRecipe;
   }
 }
